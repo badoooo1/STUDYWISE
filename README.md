@@ -289,7 +289,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Jeremiah Baddoo**
 - **GitHub**: [@badoooo1](https://github.com/badoooo1)
-- **Email**: elsablankson5252@gmail.com
+- **Email**: baddoojeremiah85@gmail.com
 
 ---
 
