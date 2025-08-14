@@ -20,11 +20,11 @@ import Footer from './components/layout/Footer';
 import type { QuizQuestion, AppState } from './types/index';
 
 const App: React.FC = () => {
-  // Pomodoro state
-  const pomodoro = usePomodoro();
-  
   // Study sessions state
-  const { studySessions, totalStudyMinutes } = useStudySessions();
+  const { studySessions, totalStudyMinutes, addStudySession } = useStudySessions();
+  
+  // Pomodoro state
+  const pomodoro = usePomodoro(addStudySession);
   
   // App state
   const [appState, setAppState] = useState<AppState>({

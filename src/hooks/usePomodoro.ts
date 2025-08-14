@@ -39,6 +39,16 @@ export const usePomodoro = (addStudySession?: (session: any) => void) => {
     if (state.mode === 'work') {
       const completedSessions = state.sessionsCompleted + 1;
 
+      // Save work session if addStudySession is provided
+      if (addStudySession && state.currentSubject.trim()) {
+        addStudySession({
+          type: 'work',
+          durationMinutes: POMODORO_DURATIONS.work / 60,
+          subject: state.currentSubject,
+          timestamp: new Date()
+        });
+      }
+
       // Determine next mode
       const nextMode = completedSessions % 4 === 0 ? 'long-break' : 'short-break';
       const nextDuration = nextMode === 'long-break' ? POMODORO_DURATIONS.longBreak : POMODORO_DURATIONS.shortBreak;

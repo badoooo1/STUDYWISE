@@ -59,6 +59,7 @@
 - **Error Handling**: Robust error management and user feedback
 - **Performance Optimization**: Efficient file processing and caching
 - **Security**: Secure API key management and file handling
+- **Local Data Persistence**: Study sessions saved to browser storage
 
 ---
 
@@ -70,6 +71,7 @@
 - **Vite 5.4.2** - Fast build tool and dev server
 - **Tailwind CSS 3.4.1** - Utility-first CSS framework
 - **Lucide React** - Beautiful icon library
+- **Local Storage** - Client-side data persistence
 
 ### **Backend**
 - **Node.js 22.18.0** - JavaScript runtime
