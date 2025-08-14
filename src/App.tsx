@@ -141,7 +141,7 @@ const App: React.FC = () => {
       const formData = new FormData();
       formData.append('document', file);
 
-      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+      const API_URL = process.env.REACT_APP_API_URL;
 
       const response = await fetch(`${API_URL}/upload-and-analyze`, {
         method: 'POST',
