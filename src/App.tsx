@@ -150,7 +150,7 @@ const App: React.FC = () => {
       
 
       const result = await response.json();
-
+      console.log(result);
       if (response.ok) {
         setAppState((prev: AppState) => ({
           ...prev,

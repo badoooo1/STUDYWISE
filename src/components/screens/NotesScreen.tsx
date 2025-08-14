@@ -59,7 +59,10 @@ const NotesScreen: React.FC<NotesScreenProps> = ({
       formData.append('document', file);
 
       try {
-        const response = await fetch('http://localhost:3001/upload-and-analyze', {
+        const API_URL = process.env.REACT_APP_API_URL;
+
+        const response = await fetch(`${API_URL}/upload-and-analyze`, {
+        
           method: 'POST',
           body: formData,
         });
