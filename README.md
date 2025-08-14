@@ -287,3 +287,5 @@ MIT License - see LICENSE file for details
 ## Support
 
 For support or questions, please open an issue on GitHub.
+#   S T U D Y W I S E  
+ 
