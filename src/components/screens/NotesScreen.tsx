@@ -58,9 +58,13 @@ const NotesScreen: React.FC<NotesScreenProps> = ({
       const formData = new FormData();
       formData.append('document', file);
 
-      try {
-        const API_URL = process.env.REACT_APP_API_URL;
+    
+        
+   
+      const API_URL = import.meta.env.VITE_APP_API_URL;
 
+      try {
+        
         const response = await fetch(`${API_URL}/upload-and-analyze`, {
         
           method: 'POST',
@@ -68,7 +72,7 @@ const NotesScreen: React.FC<NotesScreenProps> = ({
         });
 
         const result = await response.json();
-
+        console.log(result);
         if (response.ok) {
           setUploadedFileName(file.name);
           setUploadedFileContent(result.summary);
