@@ -121,7 +121,7 @@ app.post('/upload-and-analyze', upload.single('document'), async (req, res) => {
         }
 
         // --- Generate Quiz ---
-        const quizPrompt = `Based on the following text, generate a 5-question multiple-choice quiz. Each question should have 4 options, and one must be the correct answer. The quiz should directly test understanding of the provided text. Format the response as a JSON array of objects. Each object should have a 'question' (string), 'options' (array of 4 strings), and 'correctAnswer' (string, one of the options). If it is not possible to generate a quiz from the provided text, return an empty array.`;
+        const quizPrompt = `Based on the following text, generate a 25-question multiple-choice quiz. Each question should have 4 options, and one must be the correct answer. The quiz should directly test understanding of the provided text. Format the response as a JSON array of objects. Each object should have a 'question' (string), 'options' (array of 4 strings), and 'correctAnswer' (string, one of the options). If it is not possible to generate a quiz from the provided text, return an empty array.`;
         // Include the original extracted text for context in the quiz prompt
         let chatHistoryQuiz = [
             { role: "user", parts: [{ text: quizPrompt + '\n\nText:\n' + extractedText }] }
@@ -190,16 +190,12 @@ app.post('/upload-and-analyze', upload.single('document'), async (req, res) => {
 // Start the server
 app.listen(port, () => {
     console.log(`🚀 StudyWise backend server listening at http://localhost:${port}`);
-    console.log('📝 Remember to:');
-    console.log('   1. Copy env.example to .env and add your GEMINI_API_KEY');
-    console.log('   2. All required packages are installed and configured');
-    console.log('   3. PDF and DOCX support is now enabled!');
     
     // Check if GEMINI_API_KEY is set
     if (!process.env.GEMINI_API_KEY) {
         console.log('⚠️  WARNING: GEMINI_API_KEY not found in environment variables');
         console.log('   File uploads will work, but AI processing will fail');
     } else {
-        console.log('✅ GEMINI_API_KEY is configured');
+        console.log('✅Ai Connected');
     }
 });

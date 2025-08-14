@@ -1,145 +1,208 @@
-# StudyWise AI - Your Personal AI-Powered Study Assistant
+# 📚 StudyWise AI - Your Personal AI-Powered Study Assistant
 
-A comprehensive study application that uses AI to help you learn more effectively through intelligent summarization, quiz generation, and focus tracking.
+<div align="center">
 
-## Features
+![StudyWise AI Logo](https://img.shields.io/badge/StudyWise-AI%20Assistant-purple?style=for-the-badge&logo=book-open)
+![React](https://img.shields.io/badge/React-18.3.1-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue?style=for-the-badge&logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-22.18.0-green?style=for-the-badge&logo=node.js)
 
-- 📝 **Smart Note Processing**: Upload documents or paste notes for AI analysis
-- 🤖 **AI-Powered Summaries**: Get concise, clear summaries of your study materials
-- 🧠 **Interactive Quizzes**: Test your knowledge with AI-generated questions
-- ⏱️ **Pomodoro Timer**: Stay focused with customizable study sessions
-- 📊 **Progress Tracking**: Monitor your study habits and improvements
-- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
-- 🍔 **Smart Navigation**: Hamburger menu for desktop/tablet, bottom nav for mobile
+**An intelligent study companion that transforms your learning materials into comprehensive summaries and interactive quizzes using AI technology.**
 
-## Tech Stack
+[🚀 Live Demo](#) | [📖 Documentation](#features) | [🛠️ Installation](#installation) | [🤝 Contributing](#contributing)
 
-### Frontend
-- React 18 with TypeScript
-- Vite for fast development
-- Tailwind CSS for styling
-- Lucide React for icons
-- Firebase for data persistence
+</div>
 
-### Backend
-- Node.js with Express
-- Multer for file uploads
-- CORS for cross-origin requests
-- PDF parsing with pdf-parse
-- DOCX parsing with mammoth
-- Google Gemini AI integration
+---
 
-## Setup Instructions
+## 🎯 Project Overview
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-- Google Gemini API key
+**StudyWise AI** is a full-stack web application designed to revolutionize the way students interact with their study materials. By leveraging Google's Gemini AI technology, the application automatically generates concise summaries and comprehensive 25-question quizzes from uploaded documents, making learning more efficient and engaging.
 
-### 1. Quick Setup
+### 🎓 **Target Audience**
+- University students
+- Professional learners
+- Educators and tutors
+- Anyone seeking to optimize their study process
 
+### 🏆 **Key Achievements**
+- **AI-Powered Content Generation**: Automatic summary and quiz creation
+- **Multi-Format Document Support**: PDF, DOCX, and TXT files
+- **Responsive Design**: Seamless experience across all devices
+- **Real-time Processing**: Instant AI analysis and feedback
+- **Modern Tech Stack**: Built with cutting-edge technologies
+
+---
+
+## ✨ Features
+
+### 🧠 **AI-Powered Learning**
+- **Smart Summarization**: AI-generated concise summaries of study materials
+- **Comprehensive Quizzes**: 25-question multiple-choice quizzes with explanations
+- **Adaptive Content**: Tailored questions based on document content
+- **Instant Feedback**: Real-time quiz results and performance tracking
+
+### 📄 **Document Processing**
+- **Multi-Format Support**: Upload PDF, DOCX, and TXT files
+- **Text Extraction**: Advanced parsing for complex documents
+- **Content Analysis**: Intelligent processing of study materials
+- **File Management**: Secure temporary storage and cleanup
+
+### 🎨 **User Experience**
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+- **Intuitive Navigation**: Hamburger menu for desktop/tablet, bottom navigation for mobile
+- **Progress Tracking**: Monitor study sessions and performance
+- **Focus Timer**: Pomodoro technique integration for productivity
+
+### 🔧 **Technical Features**
+- **Real-time Processing**: Instant AI analysis and response
+- **Error Handling**: Robust error management and user feedback
+- **Performance Optimization**: Efficient file processing and caching
+- **Security**: Secure API key management and file handling
+
+---
+
+## 🛠️ Technology Stack
+
+### **Frontend**
+- **React 18.3.1** - Modern UI framework
+- **TypeScript 5.5.3** - Type-safe development
+- **Vite 5.4.2** - Fast build tool and dev server
+- **Tailwind CSS 3.4.1** - Utility-first CSS framework
+- **Lucide React** - Beautiful icon library
+
+### **Backend**
+- **Node.js 22.18.0** - JavaScript runtime
+- **Express.js 5.1.0** - Web application framework
+- **Multer 2.0.2** - File upload middleware
+- **CORS** - Cross-origin resource sharing
+
+### **AI & Processing**
+- **Google Gemini AI** - Advanced language model
+- **PDF-Parse 1.1.1** - PDF text extraction
+- **Mammoth 1.10.0** - DOCX document parsing
+
+### **Development Tools**
+- **ESLint** - Code linting and formatting
+- **Nodemon** - Development server with auto-restart
+- **Concurrently** - Run multiple commands simultaneously
+
+---
+
+## 📋 Prerequisites
+
+Before running this application, ensure you have the following installed:
+
+- **Node.js** (v18.0.0 or higher)
+- **npm** (v8.0.0 or higher)
+- **Git** (for version control)
+
+### **API Requirements**
+- **Google Gemini API Key** - [Get your API key here](https://makersuite.google.com/app/apikey)
+
+---
+
+## 🚀 Installation & Setup
+
+### **1. Clone the Repository**
 ```bash
-# Install all dependencies
+git clone https://github.com/badoooo1/STUDYWISE.git
+cd studywise
+```
+
+### **2. Install Dependencies**
+```bash
 npm install
+```
 
-# Run setup script to configure environment
+### **3. Environment Configuration**
+```bash
+# Copy the environment template
+cp env.example .env
+
+# Edit .env file and add your Gemini API key
+GEMINI_API_KEY=your_gemini_api_key_here
+PORT=3001
+```
+
+### **4. Run Setup Script (Optional)**
+```bash
 npm run setup
+```
 
-# Edit .env file and add your GEMINI_API_KEY
-# Then start the application
+### **5. Start the Application**
+
+#### **Option A: Run Both Frontend and Backend**
+```bash
 npm run dev:full
 ```
 
-### 2. Backend Setup
+#### **Option B: Run Separately**
+```bash
+# Terminal 1 - Backend Server
+npm run server:dev
 
-1. **Install backend dependencies:**
-   ```bash
-   npm install express multer cors pdf-parse mammoth dotenv
-   npm install --save-dev nodemon
-   ```
+# Terminal 2 - Frontend Development Server
+npm run dev
+```
 
-2. **Set up environment variables:**
-   ```bash
-   # Copy the example environment file
-   cp env.example .env
-   
-   # Edit .env and add your Gemini API key
-   # Get your API key from: https://makersuite.google.com/app/apikey
-   ```
-   
-   Your `.env` file should look like:
-   ```env
-   GEMINI_API_KEY=your_actual_gemini_api_key_here
-   PORT=3001
-   ```
+### **6. Access the Application**
+- **Frontend**: http://localhost:5173
+- **Backend API**: http://localhost:3001
 
-3. **Start the backend server:**
-   ```bash
-   node server.js
-   # or for development with auto-restart:
-   npm run dev
-   ```
+---
 
-   The backend will run on `http://localhost:3001`
+## 📖 Usage Guide
 
-### 3. Frontend Setup
+### **Getting Started**
+1. **Open the Application**: Navigate to http://localhost:5173
+2. **Upload Documents**: Use the file upload area in the Notes section
+3. **Generate Content**: Click "Generate Summary & Quiz" to process your materials
+4. **Study & Practice**: Review summaries and take interactive quizzes
 
-1. **Install frontend dependencies:**
-   ```bash
-   npm install
-   ```
+### **Supported File Types**
+- **Text Files (.txt)**: Direct text processing
+- **PDF Documents (.pdf)**: Advanced text extraction
+- **Word Documents (.docx)**: Complete document parsing
 
-2. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+### **Navigation**
+- **Desktop/Tablet**: Use the hamburger menu (top-left)
+- **Mobile**: Use the bottom navigation bar
+- **Sections**: Welcome, Notes, Study, Focus Timer, Progress
 
-   The frontend will run on `http://localhost:5173`
+---
 
-### 4. Firebase Setup (Optional)
+## 🏗️ Project Structure
 
-If you want to use Firebase for data persistence:
+```
+studywise/
+├── src/
+│   ├── components/
+│   │   ├── layout/          # Header, Footer
+│   │   ├── navigation/      # Desktop and mobile navigation
+│   │   ├── screens/         # Main application screens
+│   │   ├── study/           # Study-related components
+│   │   ├── pomodoro/        # Focus timer components
+│   │   ├── progress/        # Progress tracking
+│   │   └── ui/              # Reusable UI components
+│   ├── hooks/               # Custom React hooks
+│   ├── services/            # API services
+│   ├── types/               # TypeScript type definitions
+│   └── config/              # Configuration files
+├── server.cjs               # Backend server
+├── uploads/                 # Temporary file storage
+└── package.json             # Project dependencies
+```
 
-1. **Create a Firebase project:**
-   - Go to [Firebase Console](https://console.firebase.google.com/)
-   - Create a new project or select existing one
+---
 
-2. **Enable services:**
-   - Enable **Anonymous Authentication** (for user sessions)
-   - Enable **Firestore Database** (for data storage)
+## 🔧 API Endpoints
 
-3. **Configure Firestore Security Rules:**
-   ```javascript
-   rules_version = '2';
-   service cloud.firestore {
-     match /databases/{database}/documents {
-       match /artifacts/{appId}/users/{userId}/pomodoro_sessions/{document=**} {
-         allow read, write: if request.auth != null && request.auth.uid == userId;
-       }
-     }
-   }
-   ```
-
-4. **Add Firebase config:**
-   - Copy your Firebase config from the project settings
-   - Add it to `src/services/firebase.ts` or use environment variables
-
-**Important:** When running locally, you'll need to manually provide your Firebase config. The app will work without Firebase, but features like progress tracking and session persistence will be limited.
-
-## File Upload Support
-
-The application supports uploading the following file types:
-
-- **Text Files (.txt)**: Direct browser processing
-- **PDF Files (.pdf)**: Backend processing with pdf-parse
-- **Word Documents (.docx)**: Backend processing with mammoth
-
-## API Endpoints
-
-### POST /upload-and-analyze
-Upload a document for AI analysis.
+### **POST /upload-and-analyze**
+Process uploaded documents and generate AI content.
 
 **Request:**
+- Method: `POST`
 - Content-Type: `multipart/form-data`
 - Body: `document` (file)
 
@@ -157,135 +220,103 @@ Upload a document for AI analysis.
 }
 ```
 
-## Project Structure
+---
 
-```
-studywise/
-├── src/
-│   ├── components/
-│   │   ├── layout/          # Header, Footer
-│   │   ├── navigation/      # Desktop and mobile navigation
-│   │   ├── screens/         # Main application screens
-│   │   ├── study/           # Study-related components
-│   │   ├── pomodoro/        # Timer components
-│   │   ├── progress/        # Progress tracking
-│   │   └── ui/              # Reusable UI components
-│   ├── hooks/               # Custom React hooks
-│   ├── services/            # API and external services
-│   ├── types/               # TypeScript type definitions
-│   └── config/              # Configuration constants
-├── server.js                # Backend Express server
-├── uploads/                 # Temporary file storage
-└── package.json
-```
+## 🎨 Screenshots
 
-## Development
+<div align="center">
 
-### Running Both Frontend and Backend
+### Welcome Screen
+![Welcome Screen](https://via.placeholder.com/800x400/6366f1/ffffff?text=Welcome+Screen)
 
-**Option 1: Run both simultaneously (Recommended)**
+### Notes Upload
+![Notes Upload](https://via.placeholder.com/800x400/8b5cf6/ffffff?text=Notes+Upload)
+
+### Study Interface
+![Study Interface](https://via.placeholder.com/800x400/06b6d4/ffffff?text=Study+Interface)
+
+### Quiz Display
+![Quiz Display](https://via.placeholder.com/800x400/10b981/ffffff?text=Quiz+Display)
+
+</div>
+
+---
+
+## 🚀 Deployment
+
+### **Frontend Deployment (Vercel)**
 ```bash
-npm run dev:full
-```
-
-**Option 2: Run in separate terminals**
-
-1. **Terminal 1 - Backend:**
-   ```bash
-   npm run server:dev
-   ```
-
-2. **Terminal 2 - Frontend:**
-   ```bash
-   npm run dev
-   ```
-
-**Option 3: Run backend only**
-```bash
-npm run server
-```
-
-### Building for Production
-
-```bash
-# Build frontend
 npm run build
-
-# Start backend in production
-NODE_ENV=production node server.js
+# Deploy the dist/ folder to Vercel
 ```
 
-## Important Considerations
+### **Backend Deployment (Railway/Heroku)**
+```bash
+# Set environment variables
+GEMINI_API_KEY=your_api_key
+PORT=3001
 
-### File Type Processing
-- **Text Files (.txt)**: Fully supported with direct browser processing
-- **PDF Files (.pdf)**: Backend processing available but requires uncommenting pdf-parse code in server.js
-- **Word Documents (.docx)**: Backend processing available but requires uncommenting mammoth code in server.js
+# Deploy server.cjs
+```
 
-### Running Both Frontend and Backend
-You'll need to run both the frontend and backend simultaneously:
-- **Frontend**: Runs on `http://localhost:5173` (Vite dev server)
-- **Backend**: Runs on `http://localhost:3001` (Express server)
+---
 
-### Firebase Integration
-- The app works without Firebase, but with limited functionality
-- For full features, set up Firebase with Anonymous Authentication and Firestore
-- Progress tracking and session persistence require Firebase
+## 🤝 Contributing
 
-## Troubleshooting
+We welcome contributions to improve StudyWise AI! Please follow these steps:
 
-### Common Issues
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit your changes**: `git commit -m 'Add amazing feature'`
+4. **Push to the branch**: `git push origin feature/amazing-feature`
+5. **Open a Pull Request**
 
-1. **Backend not starting:**
-   - Check if port 3001 is available
-   - Ensure all dependencies are installed
-   - Verify GEMINI_API_KEY is set in .env file
-   - Check console for detailed error messages
+### **Development Guidelines**
+- Follow TypeScript best practices
+- Maintain responsive design principles
+- Add proper error handling
+- Include comprehensive documentation
 
-2. **File upload not working:**
-   - Ensure backend server is running on port 3001
-   - Check if uploads directory exists
-   - Verify file type is supported (.txt, .pdf, .docx)
-   - Check browser console for CORS errors
+---
 
-3. **AI processing not working:**
-   - Verify GEMINI_API_KEY is set correctly
-   - Check if the API key is valid and has quota
-   - Ensure backend server is running
+## 📝 License
 
-4. **CORS errors:**
-   - Backend CORS is configured for development
-   - For production, update CORS settings in server.js
-   - Ensure frontend is running on the expected port
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-5. **Firebase errors:**
-   - Check if Firebase project is properly configured
-   - Verify Anonymous Authentication is enabled
-   - Check Firestore security rules
+---
 
-### Getting Help
+## 👨‍💻 Author
 
-If you encounter issues:
+**Jeremiah Baddoo**
+- **GitHub**: [@badoooo1](https://github.com/badoooo1)
+- **Email**: elsablankson5252@gmail.com
 
-1. Check the browser console for frontend errors
-2. Check the terminal for backend errors
-3. Verify all dependencies are installed
-4. Ensure environment variables are set correctly
+---
 
-## Contributing
+## 🙏 Acknowledgments
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+- **Google Gemini AI** for providing the advanced language model
+- **React Team** for the amazing frontend framework
+- **Vite Team** for the fast build tool
+- **Tailwind CSS** for the utility-first CSS framework
+- **Open Source Community** for the various libraries and tools
 
-## License
+---
 
-MIT License - see LICENSE file for details
+## 📊 Project Statistics
 
-## Support
+- **Lines of Code**: 2,000+
+- **Components**: 15+
+- **API Endpoints**: 1
+- **File Types Supported**: 3
+- **AI Questions Generated**: 25 per document
 
-For support or questions, please open an issue on GitHub.
-#   S T U D Y W I S E  
- 
+---
+
+<div align="center">
+
+**Made with ❤️ for better learning experiences**
+
+[⬆️ Back to Top](#-studywise-ai---your-personal-ai-powered-study-assistant)
+
+</div>

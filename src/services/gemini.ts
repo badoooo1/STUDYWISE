@@ -1,5 +1,5 @@
 import { GEMINI_API_URL } from '../config/constants';
-import type { QuizQuestion } from '../types';
+import type { QuizQuestion } from '../types/index';
 
 export class GeminiService {
   private apiKey: string;
@@ -31,7 +31,7 @@ export class GeminiService {
   }
 
   async generateQuiz(notes: string): Promise<QuizQuestion[]> {
-    const prompt = `Based on the following notes, generate a 5-question multiple-choice quiz. Each question should have 4 options, and one must be the correct answer. The quiz should directly test understanding of the provided notes. Format the response as a JSON array of objects. Each object should have a 'question' (string), 'options' (array of 4 strings), and 'correctAnswer' (string, one of the options). If it is not possible to generate a quiz from the provided notes, return an empty array.`;
+    const prompt = `Based on the following notes, generate a 25-question multiple-choice quiz. Each question should have 4 options, and one must be the correct answer. The quiz should directly test understanding of the provided notes. Format the response as a JSON array of objects. Each object should have a 'question' (string), 'options' (array of 4 strings), and 'correctAnswer' (string, one of the options). If it is not possible to generate a quiz from the provided notes, return an empty array.`;
 
     const payload = {
       contents: [{ role: "user", parts: [{ text: prompt + '\n\nNotes:\n' + notes }] }],
