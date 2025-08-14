@@ -1,34 +1,46 @@
 import { useState, useEffect } from 'react';
-import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import type { StudySession } from '../types';
 
-declare global {
-  const __app_id: string;
-}
-
-export const useStudySessions = (db: any, userId: string | null, isAuthReady: boolean) => {
+export const useStudySessions = () => {
   const [studySessions, setStudySessions] = useState<StudySession[]>([]);
   const [error, setError] = useState('');
 
+  // Load sessions from localStorage on mount
   useEffect(() => {
-    if (!db || !userId || !isAuthReady) return;
-
-    const sessionsCollectionRef = collection(db, `artifacts/${__app_id}/users/${userId}/pomodoro_sessions`);
-    const q = query(sessionsCollectionRef, orderBy('timestamp', 'desc'));
-
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const sessionsData = snapshot.docs.map(doc => ({ 
-        id: doc.id, 
-        ...doc.data() 
-      })) as StudySession[];
-      setStudySessions(sessionsData);
-    }, (error) => {
-      console.error("Error fetching study sessions:", error);
+    try {
+      const savedSessions = localStorage.getItem('studywise_sessions');
+      if (savedSessions) {
+        const parsedSessions = JSON.parse(savedSessions);
+        // Convert timestamp strings back to Date objects
+        const sessionsWithDates = parsedSessions.map((session: any) => ({
+          ...session,
+          timestamp: session.timestamp ? new Date(session.timestamp) : new Date()
+        }));
+        setStudySessions(sessionsWithDates);
+      }
+    } catch (err) {
+      console.error("Error loading sessions from localStorage:", err);
       setError("Failed to load study session history.");
-    });
+    }
+  }, []);
 
-    return () => unsubscribe();
-  }, [db, userId, isAuthReady]);
+  // Save sessions to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('studywise_sessions', JSON.stringify(studySessions));
+    } catch (err) {
+      console.error("Error saving sessions to localStorage:", err);
+    }
+  }, [studySessions]);
+
+  const addStudySession = (session: Omit<StudySession, 'id'>) => {
+    const newSession: StudySession = {
+      ...session,
+      id: Date.now().toString(),
+      timestamp: new Date()
+    };
+    setStudySessions(prev => [newSession, ...prev]);
+  };
 
   const totalStudyMinutes = studySessions
     .filter(s => s.type === 'work')
@@ -37,6 +49,7 @@ export const useStudySessions = (db: any, userId: string | null, isAuthReady: bo
   return {
     studySessions,
     totalStudyMinutes,
-    error
+    error,
+    addStudySession
   };
 };

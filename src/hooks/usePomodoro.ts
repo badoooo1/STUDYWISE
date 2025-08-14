@@ -1,13 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { POMODORO_DURATIONS, NOTIFICATION_SOUND_URL } from '../config/constants';
 import type { PomodoroState } from '../types';
 
-declare global {
-  const __app_id: string;
-}
-
-export const usePomodoro = (db: any, userId: string | null, isAuthReady: boolean) => {
+export const usePomodoro = (addStudySession?: (session: any) => void) => {
   const [state, setState] = useState<PomodoroState>({
     mode: 'work',
     timeLeft: POMODORO_DURATIONS.work,
@@ -43,21 +38,6 @@ export const usePomodoro = (db: any, userId: string | null, isAuthReady: boolean
   const handlePomodoroCompletion = async () => {
     if (state.mode === 'work') {
       const completedSessions = state.sessionsCompleted + 1;
-      
-      // Save work session to Firestore
-      if (db && userId && isAuthReady && state.currentSubject.trim()) {
-        try {
-          await addDoc(collection(db, `artifacts/${__app_id}/users/${userId}/pomodoro_sessions`), {
-            type: 'work',
-            durationMinutes: POMODORO_DURATIONS.work / 60,
-            subject: state.currentSubject,
-            timestamp: serverTimestamp(),
-            distractionEvents: 0
-          });
-        } catch (e) {
-          console.error("Error adding work session document: ", e);
-        }
-      }
 
       // Determine next mode
       const nextMode = completedSessions % 4 === 0 ? 'long-break' : 'short-break';

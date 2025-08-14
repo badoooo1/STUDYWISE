@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 // Hooks
-import { useFirebase } from './hooks/useFirebase';
 import { usePomodoro } from './hooks/usePomodoro';
 import { useStudySessions } from './hooks/useStudySessions';
 
@@ -21,14 +20,11 @@ import Footer from './components/layout/Footer';
 import type { QuizQuestion, AppState } from './types/index';
 
 const App: React.FC = () => {
-  // Firebase state
-  const { userId, isAuthReady, error: firebaseError, db } = useFirebase();
-  
   // Pomodoro state
-  const pomodoro = usePomodoro(db, userId, isAuthReady);
+  const pomodoro = usePomodoro();
   
   // Study sessions state
-  const { studySessions, totalStudyMinutes } = useStudySessions(db, userId, isAuthReady);
+  const { studySessions, totalStudyMinutes } = useStudySessions();
   
   // App state
   const [appState, setAppState] = useState<AppState>({
@@ -175,7 +171,7 @@ const App: React.FC = () => {
 
   // Render current screen
   const renderCurrentScreen = () => {
-    const combinedError = firebaseError || appState.error;
+    const combinedError = appState.error;
 
     switch (appState.currentScreen) {
       case 'welcome':
@@ -230,8 +226,6 @@ const App: React.FC = () => {
       case 'progress':
         return (
           <ProgressScreen
-            userId={userId}
-            isAuthReady={isAuthReady}
             studySessions={studySessions}
             totalStudyMinutes={totalStudyMinutes}
             onBack={handleBackToWelcome}

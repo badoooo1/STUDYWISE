@@ -4,8 +4,6 @@ import ProgressTracker from '../progress/ProgressTracker';
 import type { StudySession } from '../../types';
 
 interface ProgressScreenProps {
-  userId: string | null;
-  isAuthReady: boolean;
   studySessions: StudySession[];
   totalStudyMinutes: number;
   onBack: () => void;
@@ -13,8 +11,6 @@ interface ProgressScreenProps {
 }
 
 const ProgressScreen: React.FC<ProgressScreenProps> = ({
-  userId,
-  isAuthReady,
   studySessions,
   totalStudyMinutes,
   onBack,
@@ -87,8 +83,6 @@ const ProgressScreen: React.FC<ProgressScreenProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
           <ProgressTracker
-            userId={userId}
-            isAuthReady={isAuthReady}
             studySessions={studySessions}
             totalStudyMinutes={totalStudyMinutes}
           />
