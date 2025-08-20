@@ -125,6 +125,7 @@ cp env.example .env
 # Edit .env file and add your Gemini API key
 GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3001
+VITE_APP_API_URL=http://localhost:3001
 ```
 
 ### **4. Run Setup Script (Optional)**
